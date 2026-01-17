@@ -20,5 +20,14 @@ CHIP Mux8Way16 {
     OUT out[16];
 
     PARTS:
-    //// Replace this comment with your code.
+    // first tier: select within each pair using LSB
+    Mux16 (a=a, b=b, sel=sel[0], out=ab);
+    Mux16 (a=c, b=d, sel=sel[0], out=cd);
+    Mux16 (a=e, b=f, sel=sel[0], out=ef);
+    Mux16 (a=g, b=h, sel=sel[0], out=gh);
+    // second tier: select between pairs using next bit
+    Mux16 (a=ab, b=cd, sel=sel[1], out=top);
+    Mux16 (a=ef, b=gh, sel=sel[1], out=bottom);
+    // final select between top and bottom groups
+    Mux16 (a=top, b=bottom, sel=sel[2], out=out);
 }

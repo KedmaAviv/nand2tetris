@@ -14,5 +14,8 @@ CHIP DMux4Way {
     OUT a, b, c, d;
 
     PARTS:
-    //// Replace this comment with your code.
+    // split by highest bit, then by lowest bit
+    DMux (in=in, sel=sel[1], a=half0, b=half1);
+    DMux (in=half0, sel=sel[0], a=a, b=b);
+    DMux (in=half1, sel=sel[0], a=c, b=d);
 }
