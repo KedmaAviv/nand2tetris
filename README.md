@@ -1,1 +1,1 @@
-This a copy of Campus-IL nand2tetris class
+This is a copy of Campus-IL nand2tetris class
